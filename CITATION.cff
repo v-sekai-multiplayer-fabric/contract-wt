@@ -1,0 +1,99 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "fabric-wt-harness: an independent WebTransport end for testing the fabric's own"
+abstract: >
+  A Python WebTransport client and server, built on aioquic, used to test the
+  Godot HTTP/3 and WebTransport implementation in fabric-godot-core by swapping
+  roles. It exists because two ends of one implementation agree with each other
+  about anything both get wrong: a Godot client against a Godot server passes
+  every test the pair can run and then fails against a browser. This end was
+  written from the specification instead, so a disagreement between them means
+  something.
+authors:
+  - family-names: Lee
+    given-names: "K. S. Ernest (iFire)"
+    email: ernest.lee@chibifire.com
+    orcid: "https://orcid.org/0000-0003-4570-1436"
+version: 0.1.0-dev.1
+date-released: "2026-08-12"
+license: Apache-2.0
+repository-code: "https://github.com/v-sekai-multiplayer-fabric/fabric-wt-harness"
+keywords:
+  - webtransport
+  - http3
+  - quic
+  - conformance-testing
+  - aioquic
+  - godot
+
+references:
+
+  - type: software
+    title: "aioquic: a QUIC and HTTP/3 implementation in Python"
+    authors:
+      - family-names: "André"
+        given-names: Jeremy
+      - name: "aioquic contributors"
+    year: 2026
+    version: "1.3.0"
+    license: BSD-3-Clause
+    url: "https://github.com/aiortc/aioquic"
+    notes: >
+      The independent end. Chosen because it implements HTTP/3 and WebTransport
+      from the specifications rather than from the Godot side, which is the only
+      property that makes a disagreement informative.
+
+  - type: software
+    title: "fabric-godot-core: the Godot engine fork, branch gyre"
+    authors:
+      - family-names: Lee
+        given-names: "K. S. Ernest (iFire)"
+        orcid: "https://orcid.org/0000-0003-4570-1436"
+    year: 2026
+    url: "https://github.com/v-sekai-multiplayer-fabric/fabric-godot-core"
+    notes: >
+      What is under test. modules/http3 carries WebTransportPeer over picoquic,
+      and modules/http3/demo holds the Godot half of the role swap.
+
+  - type: software
+    title: "picoquic: a minimal QUIC implementation"
+    authors:
+      - family-names: Huitema
+        given-names: Christian
+    year: 2026
+    license: MIT
+    url: "https://github.com/private-octopus/picoquic"
+    notes: "What the Godot end runs on, vendored inside fabric-godot-core."
+
+  # ── The specifications both ends are held to ─────────────────────────────────
+  #
+  # Named because the point of two implementations is that neither is the
+  # standard. When they disagree, these decide which one is wrong.
+
+  - type: standard
+    title: "RFC 9114: HTTP/3"
+    authors:
+      - family-names: Bishop
+        given-names: Mike
+    year: 2022
+    url: "https://www.rfc-editor.org/rfc/rfc9114"
+
+  - type: standard
+    title: "RFC 9297: HTTP Datagrams and the Capsule Protocol"
+    authors:
+      - family-names: Schinazi
+        given-names: David
+      - family-names: Pauly
+        given-names: Tommy
+    year: 2022
+    url: "https://www.rfc-editor.org/rfc/rfc9297"
+    notes: "The datagram path, which is the unreliable-unsequenced half of what WT offers."
+
+  - type: standard
+    title: "RFC 9220: Bootstrapping WebSockets with HTTP/3"
+    authors:
+      - family-names: Hamilton
+        given-names: Ryan
+    year: 2022
+    url: "https://www.rfc-editor.org/rfc/rfc9220"
+    notes: "Extended CONNECT, which is how a WebTransport session is opened."

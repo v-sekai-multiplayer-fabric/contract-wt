@@ -1,0 +1,3 @@
+# aioquic is the whole point: an HTTP/3 and WebTransport implementation written from the
+# specification rather than from the Godot side, so the two disagreeing means something.
+aioquic>=1.3.0
