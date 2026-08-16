@@ -1,7 +1,7 @@
-# fabric-wt-harness
+# contract-wt
 
 A Python WebTransport client and server that test the Godot H3/WT implementation in
-`fabric-godot-core` by swapping roles.
+`entities-godot` by swapping roles.
 
 `README.md` gives the design. `CITATION.cff` says what this is built on; add a reference there
 when you add a dependency here.
@@ -15,7 +15,7 @@ other end. So:
   same source, they agree by construction and the test proves nothing.
 - Do NOT relax a check here to make a Godot test pass. A disagreement is the finding. Fix the
   side that is wrong, and if the specification is ambiguous, say which reading each end took.
-- Do NOT depend on the engine, a Godot build, or `fabric-godot-core` being checked out. This
+- Do NOT depend on the engine, a Godot build, or `entities-godot` being checked out. This
   must run on its own against anything that speaks WebTransport, including a browser.
 
 ## Two modes, not three
